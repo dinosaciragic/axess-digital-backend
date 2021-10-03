@@ -1,4 +1,4 @@
 {
     "PORT": 5000,
-    "NORTHWIND_API": "northwind.now.sh/api/"
+    "NORTHWIND_API": "https://northwind.vercel.app/api/"
 }

@@ -13,6 +13,7 @@
     "axios": "^0.22.0",
     "config": "^3.3.6",
     "express": "^4.17.1",
+    "express-validator": "^6.12.2",
     "flatted": "^3.2.2",
     "nodemon": "^2.0.13"
   }
