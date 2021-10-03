@@ -5,7 +5,7 @@ const axios = require('axios');
 const { check, validationResult } = require('express-validator');
 
 // Northwind URL
-const ordersApi = config.get('NORTHWIND_API') + 'orders/';
+const productsApi = config.get('NORTHWIND_API') + 'products/';
 
 // Axios Configuration for POST and PUT Requests
 const axiosConfig = {
@@ -14,12 +14,12 @@ const axiosConfig = {
   },
 };
 
-// @route GET  api/orders
-// @desc Get all orders
+// @route GET  api/products
+// @desc Get all products
 // @access Public
 router.get('/', async (req, res) => {
   try {
-    let data = await axios.get(ordersApi);
+    let data = await axios.get(productsApi);
 
     res.json(data.data);
   } catch (error) {
@@ -28,12 +28,12 @@ router.get('/', async (req, res) => {
   }
 });
 
-// @route     GET api/orders/:id
-// @desc      Get order by id
+// @route     GET api/products/:id
+// @desc      Get product by id
 // @access    Public
 router.get('/:id', async (req, res) => {
   try {
-    let contact = await axios.get(ordersApi + req.params.id);
+    let contact = await axios.get(productsApi + req.params.id);
 
     res.json(contact.data);
   } catch (err) {
@@ -42,18 +42,18 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// @route POST  api/orders
-// @desc Add new order
+// @route POST  api/products
+// @desc Add new product
 // @access Public
 router.post(
   '/',
   [
-    [check('customerId', 'customerId is required').not().isEmpty()],
-    [check('employeeId', 'employeeId is required').not().isEmpty()],
-    [check('orderDate', 'orderDate is required').not().isEmpty()],
-    [check('requiredDate', 'requiredDate is required').not().isEmpty()],
-    [check('shippedDate', 'shippedDate is required').not().isEmpty()],
-    [check('shipName', 'shipName is required').not().isEmpty()],
+    [check('supplierId', 'supplierId is required').not().isEmpty()],
+    [check('categoryId', 'categoryId is required').not().isEmpty()],
+    [check('quantityPerUnit', 'quantityPerUnit is required').not().isEmpty()],
+    [check('unitPrice', 'unitPrice is required').not().isEmpty()],
+    [check('unitsInStock', 'unitsInStock is required').not().isEmpty()],
+    [check('unitsOnOrder', 'unitsOnOrder is required').not().isEmpty()],
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -63,7 +63,7 @@ router.post(
     }
 
     try {
-      const postRes = await axios.post(ordersApi, req.body, axiosConfig);
+      const postRes = await axios.post(productsApi, req.body, axiosConfig);
 
       res.json(postRes.data);
     } catch (err) {
@@ -73,13 +73,13 @@ router.post(
   }
 );
 
-// @route PUT  api/orders/
-// @desc Update Order
+// @route PUT  api/products/
+// @desc Update product
 // @access Public
 // @note Their API does not work properly
 router.put('/', async (req, res) => {
   try {
-    const putRes = await axios.put(ordersApi, req.body, axiosConfig);
+    const putRes = await axios.put(productsApi, req.body, axiosConfig);
 
     res.json(putRes.data);
   } catch (err) {
@@ -88,12 +88,12 @@ router.put('/', async (req, res) => {
   }
 });
 
-// @route     DELETE api/orders/:id
-// @desc      Delete order by id
+// @route     DELETE api/products/:id
+// @desc      Delete product by id
 // @access    Public
 router.delete('/:id', async (req, res) => {
   try {
-    let contact = await axios.delete(ordersApi + req.params.id);
+    let contact = await axios.delete(productsApi + req.params.id);
 
     res.json(contact.data);
   } catch (err) {

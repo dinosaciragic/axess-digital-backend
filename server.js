@@ -12,6 +12,7 @@ app.get('/', (req, res) => {
 
 // Define routes
 app.use('/api/orders', require('./routes/orders'));
+app.use('/api/products', require('./routes/products'));
 
 const PORT = config.get('PORT');
 
