@@ -14,6 +14,7 @@ app.get('/', (req, res) => {
 app.use('/api/orders', require('./routes/orders'));
 app.use('/api/products', require('./routes/products'));
 app.use('/api/suppliers', require('./routes/suppliers'));
+app.use('/api/categories', require('./routes/categories'));
 
 const PORT = config.get('PORT');
 
