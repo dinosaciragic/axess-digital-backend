@@ -47,14 +47,7 @@ router.get('/:id', async (req, res) => {
 // @access Public
 router.post(
   '/',
-  [
-    [check('customerId', 'customerId is required').not().isEmpty()],
-    [check('employeeId', 'employeeId is required').not().isEmpty()],
-    [check('orderDate', 'orderDate is required').not().isEmpty()],
-    [check('requiredDate', 'requiredDate is required').not().isEmpty()],
-    [check('shippedDate', 'shippedDate is required').not().isEmpty()],
-    [check('shipName', 'shipName is required').not().isEmpty()],
-  ],
+  [[check('shipName', 'shipName is required').not().isEmpty()]],
   async (req, res) => {
     const errors = validationResult(req);
 
